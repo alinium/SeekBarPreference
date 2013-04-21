@@ -86,21 +86,12 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 			return;
 		}
 
+		boolean canSetState = callChangeListener(mCurrentValue);
+		
 		// Persist current value if needed
-		if (shouldPersist()) {
+		if (canSetState && shouldPersist()) {
 			persistInt(mCurrentValue);
 		}
-
-		// Notify activity about changes (to update preference summary line)
-		notifyChanged();
-	}
-
-	@Override
-	public CharSequence getSummary() {
-		// Format summary string with current value
-		String summary = super.getSummary().toString();
-		int value = getPersistedInt(mDefaultValue);
-		return String.format(summary, value);
 	}
 
 	public void onProgressChanged(SeekBar seek, int value, boolean fromTouch) {
