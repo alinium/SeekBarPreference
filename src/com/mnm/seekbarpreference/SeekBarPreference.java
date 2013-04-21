@@ -14,13 +14,10 @@ import android.widget.TextView;
 public final class SeekBarPreference extends DialogPreference implements OnSeekBarChangeListener {
 
 	// Namespaces to read attributes
-	private static final String PREFERENCE_NS = "http://schemas.android.com/apk/res/com.mnm.seekbarpreference";
 	private static final String ANDROID_NS = "http://schemas.android.com/apk/res/android";
 
 	// Attribute names
 	private static final String ATTR_DEFAULT_VALUE = "defaultValue";
-	private static final String ATTR_MIN_VALUE = "minValue";
-	private static final String ATTR_MAX_VALUE = "maxValue";
 
 	// Default values for defaults
 	private static final int DEFAULT_CURRENT_VALUE = 50;
@@ -51,6 +48,7 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.com_mnm_seekbarpreference_SeekBarPreference);
 		mMinValue = array.getInteger(R.styleable.com_mnm_seekbarpreference_SeekBarPreference_minValue, DEFAULT_MIN_VALUE);
 		mMaxValue = array.getInteger(R.styleable.com_mnm_seekbarpreference_SeekBarPreference_maxValue, DEFAULT_MAX_VALUE);
+		array.recycle();
 	}
 
 	@Override
