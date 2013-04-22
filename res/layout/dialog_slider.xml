@@ -13,7 +13,7 @@
 		android:layout_height="wrap_content"
 		android:layout_alignParentTop="true"
 		android:layout_centerHorizontal="true"
-		android:textColor="?android:attr/textColorPrimary"
+		android:textColor="#888888"
 		android:textAppearance="?android:attr/textAppearanceLarge" />
 		
 	<SeekBar
@@ -29,7 +29,8 @@
 		android:layout_height="wrap_content"
 		android:layout_above="@id/seek_bar"
 		android:layout_alignParentLeft="true"
-		android:textColor="?android:attr/textColorSecondary" />
+		android:textColor="#88888888"
+		android:textAppearance="?android:attr/textAppearanceMedium" />
 
 	<TextView
 		android:id="@+id/max_value"
@@ -37,6 +38,7 @@
 		android:layout_height="wrap_content"
 		android:layout_above="@id/seek_bar"
 		android:layout_alignParentRight="true"
-		android:textColor="?android:attr/textColorSecondary" />		
+		android:textColor="#88888888"
+		android:textAppearance="?android:attr/textAppearanceMedium" />		
 				
 </RelativeLayout>
