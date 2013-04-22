@@ -28,6 +28,8 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 	private final int mDefaultValue;
 	private final int mMaxValue;
 	private final int mMinValue;
+	private final String mMinLabel;
+	private final String mMaxLabel;
 
 	// Current value
 	private int mCurrentValue;
@@ -48,6 +50,8 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.com_mnm_seekbarpreference_SeekBarPreference);
 		mMinValue = array.getInteger(R.styleable.com_mnm_seekbarpreference_SeekBarPreference_minValue, DEFAULT_MIN_VALUE);
 		mMaxValue = array.getInteger(R.styleable.com_mnm_seekbarpreference_SeekBarPreference_maxValue, DEFAULT_MAX_VALUE);
+		mMinLabel = array.getString(R.styleable.com_mnm_seekbarpreference_SeekBarPreference_minLabel);
+		mMaxLabel = array.getString(R.styleable.com_mnm_seekbarpreference_SeekBarPreference_maxLabel);
 		array.recycle();
 	}
 
@@ -61,8 +65,8 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 		View view = inflater.inflate(R.layout.dialog_slider, null);
 
 		// Setup minimum and maximum text labels
-		((TextView) view.findViewById(R.id.min_value)).setText(Integer.toString(mMinValue));
-		((TextView) view.findViewById(R.id.max_value)).setText(Integer.toString(mMaxValue));
+		((TextView) view.findViewById(R.id.min_value)).setText(mMinLabel == null ? Integer.toString(mMinValue) : mMinLabel);
+		((TextView) view.findViewById(R.id.max_value)).setText(mMaxLabel == null ? Integer.toString(mMaxValue) : mMaxLabel);
 
 		// Setup SeekBar
 		mSeekBar = (SeekBar) view.findViewById(R.id.seek_bar);
