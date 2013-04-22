@@ -11,7 +11,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public final class SeekBarPreference extends DialogPreference implements OnSeekBarChangeListener {
+public class SeekBarPreference extends DialogPreference implements OnSeekBarChangeListener {
 
 	// Namespaces to read attributes
 	private static final String ANDROID_NS = "http://schemas.android.com/apk/res/android";
@@ -32,7 +32,7 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 	private final String mMaxLabel;
 
 	// Current value
-	private int mCurrentValue;
+	protected int mCurrentValue;
 
 	// View elements
 	private SeekBar mSeekBar;
@@ -76,7 +76,7 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 
 		// Setup text label for current value
 		mValueText = (TextView) view.findViewById(R.id.current_value);
-		mValueText.setText(Integer.toString(mCurrentValue));
+		mValueText.setText(getCurrentValueText());
 
 		return view;
 	}
@@ -102,9 +102,13 @@ public final class SeekBarPreference extends DialogPreference implements OnSeekB
 		// Update current value
 		mCurrentValue = value + mMinValue;
 		// Update label with current value
-		mValueText.setText(Integer.toString(mCurrentValue));
+		mValueText.setText(getCurrentValueText());
 	}
 
+	protected String getCurrentValueText() {
+		return Integer.toString(mCurrentValue);
+	}
+	
 	public void onStartTrackingTouch(SeekBar seek) {
 		// Not used
 	}
